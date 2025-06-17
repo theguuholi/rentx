@@ -1,14 +1,8 @@
 import { render } from '@testing-library/react-native';
 import Home from '.';
-import { ThemeProvider } from 'styled-components/native';
-import theme from '../../styles/theme';
 import React from 'react';
+import { Providers } from '../../utils/test-utils';
 
-const Providers: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <ThemeProvider theme={theme}>
-    {children}
-  </ThemeProvider>
-);
 
 describe('Home', () => {
   it('should render correctly', () => {
