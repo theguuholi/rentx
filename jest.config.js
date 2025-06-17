@@ -15,5 +15,11 @@ module.exports = {
     moduleNameMapper: {
         '\\.svg': '<rootDir>/src/__mocks__/svgMock.tsx',
         'react-native-responsive-fontsize': '<rootDir>/src/__mocks__/react-native-responsive-fontsize.ts'
-    }
+    },
+    collectCoverage: true,
+    collectCoverageFrom: [
+        'src/**/*.tsx',
+        '!src/**/*.spec.tsx',
+    ],
+    coverageReporters: ['lcov']
 };
