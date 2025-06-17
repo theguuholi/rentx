@@ -2,7 +2,7 @@ import { Container, Details, Name, Brand, About, Rent, Period, Price, Type, CarI
 import GasolineSvg from '../../assets/gasoline.svg';
 import { CartDTO } from "../../dtos/CartDTO";
 
-const Car = ({ data }: CartDTO) => {
+const Car = ({ data }: { data: CartDTO }) => {
   return (
     <Container>
       <Details>

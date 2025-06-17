@@ -1,19 +1,43 @@
 import { StatusBar } from "expo-status-bar";
-import { Container, Header, HeaderContent, TotalCars } from "./styles";
+import { CarList, Container, Header, HeaderContent, TotalCars } from "./styles";
 import Logo from '../../assets/logo.svg';
 import { RFValue } from "react-native-responsive-fontsize";
 import Car from "../../components/Car";
+import { CartDTO } from "../../dtos/CartDTO";
 
 const Home = () => {
-  const car = {
-    brand: 'Ford',
-    name: 'Mustang',
-    rent: {
-      period: 'Ao dia',
-      price: 580
+  const cars = [
+    {
+      id: '1',
+      brand: 'Ford',
+      name: 'Mustang',
+      rent: {
+        period: 'Ao dia',
+        price: 580
+      },
+      thumbnail: 'https://pngimg.com/d/mustang_PNG47.png'
     },
-    thumbnail: 'https://pngimg.com/d/mustang_PNG47.png'
-  }
+    {
+      id: '2',
+      brand: 'Chevrolet',
+      name: 'Camaro',
+      rent: {
+        period: 'Ao dia',
+        price: 580
+      },
+      thumbnail: 'https://pngimg.com/d/camaro_PNG10164.png'
+    },
+    {
+      id: '3',
+      brand: 'Porsche',
+      name: '911 Carrera',
+      rent: {
+        period: 'Ao dia',
+        price: 1000
+      },
+      thumbnail: 'https://pngimg.com/d/porsche_PNG10164.png'
+    }
+  ]
 
   return (
     <Container>
@@ -27,11 +51,11 @@ const Home = () => {
         </HeaderContent>
       </Header>
 
-      <Car data={car} />
-      <Car data={car} />
-      <Car data={car} />
-      <Car data={car} />
-      <Car data={car} />
+      <CarList
+        data={cars}
+        keyExtractor={(item: CartDTO) => item.id}
+        renderItem={({ item }: { item: CartDTO }) => <Car data={item} />}
+      />
     </Container>
   );
 };

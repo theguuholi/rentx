@@ -4,6 +4,7 @@ import { Providers } from '../../utils/test-utils';
 
 describe('Car', () => {
   const car = {
+    id: '1',
     brand: 'Audi',
     name: 'RS 5 Coupé',
     rent: {
