@@ -6,6 +6,7 @@ import { Archivo_400Regular, Archivo_500Medium, Archivo_600SemiBold } from '@exp
 import { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components/native';
 import theme from './src/styles/theme';
+import CarDetails from './src/screens/CarDetails';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -31,7 +32,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Home />
+      <CarDetails />
     </ThemeProvider>
   );
 }
