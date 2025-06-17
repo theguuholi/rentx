@@ -1,13 +1,13 @@
 import { Container, Title } from "./styles";
 
-const Home = () => {
+const Component = () => {
   return (
     <Container>
         <Title>
-            Home
+            Component
         </Title>
     </Container>
   );
 };
 
-export default Home;    
+export default Component;    

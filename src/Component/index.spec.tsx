@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react-native';
 import Home from '.';
 
-describe('Home', () => {
+describe('Component', () => {
   it('should render correctly', () => {
     const { getByText } = render(<Home />);
     
-    expect(getByText('Hello World')).toBeTruthy();
+    expect(getByText('Component')).toBeTruthy();
   });
 });
