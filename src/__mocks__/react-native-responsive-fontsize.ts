@@ -1,0 +1,1 @@
+export const RFValue = (value: number) => value; 
