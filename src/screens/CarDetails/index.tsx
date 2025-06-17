@@ -3,7 +3,7 @@ import { Container, Header } from "./styles";
 
 const CarDetails = () => {
     return (
-        <Container>
+        <Container testID="car-details">
             <Header>
                 <BackButton onPress={() => { }} />
             </Header>

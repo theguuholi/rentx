@@ -1,6 +1,6 @@
 import { Container } from "../../screens/Home/styles";
 import { MaterialIcons } from "@expo/vector-icons";
-import { useTheme } from "styled-components";
+import { useTheme } from "styled-components/native";
 import { BorderlessButtonProps } from "react-native-gesture-handler";
 
 interface BackButtonProps extends BorderlessButtonProps {
