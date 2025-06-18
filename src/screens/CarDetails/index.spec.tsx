@@ -26,4 +26,5 @@ describe('CarDetails', () => {
             backButton.props.onPress();
         });
     });
+    
 });

@@ -79,6 +79,18 @@ export const About = styled.Text`
     color: ${({ theme }: { theme: DefaultTheme }) => theme.colors.text};
     font-size: ${RFValue(15)}px;
     text-align: justify;
+    line-height: ${RFValue(25)}px;
 
     margin-top: 23px;
+`;
+
+export const Acessories = styled.View`
+    width: 100%;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 16px;
 `;
