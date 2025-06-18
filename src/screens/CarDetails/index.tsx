@@ -3,7 +3,7 @@ import { BackButton } from "../../components/BackButton";
 import ImageSlider from "../../components/ImageSlider";
 import {
     About, Acessories, Brand, CarImages, Container,
-    Content, Description, Details, Header, Name, Period, Price, Rent
+    Content, Description, Details, Footer, Header, Name, Period, Price, Rent
 } from "./styles";
 
 import SpeedSvg from '../../assets/speed.svg';
@@ -12,6 +12,7 @@ import ForceSvg from '../../assets/force.svg';
 import GasolineSvg from '../../assets/gasoline.svg';
 import ExchangeSvg from '../../assets/exchange.svg';
 import PeopleSvg from '../../assets/people.svg';
+import Button from "../../components/Button";
 
 const CarDetails = () => {
     const imagesUrl = [
@@ -60,6 +61,10 @@ const CarDetails = () => {
                     Este é um automóvel desportivo. Fabricado em 2020, o Huracan é um dos carros mais rápidos do mundo.
                 </About>
             </Content>
+
+            <Footer>
+                <Button title="Confirmar" />
+            </Footer>
         </Container>
     )
 }
