@@ -1,6 +1,6 @@
 import { BackButton } from "../../components/BackButton";
 import ImageSlider from "../../components/ImageSlider";
-import { CarImages, Container, Header } from "./styles";
+import { About, Brand, CarImages, Container, Content, Description, Details, Header, Name, Period, Price, Rent } from "./styles";
 
 const CarDetails = () => {
     const imagesUrl = [
@@ -22,6 +22,24 @@ const CarDetails = () => {
             <CarImages>
                 <ImageSlider imagesUrl={imagesUrl} />
             </CarImages>
+
+            <Content>
+                <Details>
+                    <Description>
+                        <Brand>Lamborguini</Brand>
+                        <Name>Huracan</Name>
+                    </Description>
+
+                    <Rent>
+                        <Period>Ao Dia</Period>
+                        <Price>150</Price>
+                    </Rent>
+                </Details>
+
+                <About>
+                    Este é um automóvel desportivo. Fabricado em 2020, o Huracan é um dos carros mais rápidos do mundo.
+                </About>
+            </Content>
         </Container>
     )
 }
