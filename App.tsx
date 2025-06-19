@@ -8,6 +8,7 @@ import { ThemeProvider } from 'styled-components/native';
 import theme from './src/styles/theme';
 import CarDetails from './src/screens/CarDetails';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import Schedulling from './src/screens/Schedulling';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -34,7 +35,7 @@ export default function App() {
   return (
     <GestureHandlerRootView>
       <ThemeProvider theme={theme}>
-        <CarDetails />
+        <Schedulling />
       </ThemeProvider>
     </GestureHandlerRootView>
 
