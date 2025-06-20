@@ -1,4 +1,3 @@
-import Home from './src/screens/Home';
 import * as SplashScreen from 'expo-splash-screen';
 
 import { Inter_400Regular, Inter_500Medium, useFonts } from '@expo-google-fonts/inter';
@@ -6,9 +5,8 @@ import { Archivo_400Regular, Archivo_500Medium, Archivo_600SemiBold } from '@exp
 import { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components/native';
 import theme from './src/styles/theme';
-import CarDetails from './src/screens/CarDetails';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import Schedulling from './src/screens/Schedulling';
+import SchedulingDetails from './src/screens/SchedulingDetails';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -35,7 +33,7 @@ export default function App() {
   return (
     <GestureHandlerRootView>
       <ThemeProvider theme={theme}>
-        <Schedulling />
+        <SchedulingDetails />
       </ThemeProvider>
     </GestureHandlerRootView>
 
