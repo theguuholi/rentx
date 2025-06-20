@@ -4,6 +4,7 @@ import theme from "../../styles/theme";
 import ArrowSvg from "../../assets/arrow.svg";
 import { StatusBar } from "react-native";
 import Button from "../../components/Button";
+import Calendar from "../../components/Calendar";
 
 const Schedulling = () => {
     return (
@@ -33,6 +34,7 @@ const Schedulling = () => {
             </Header>
 
             <Content>
+                <Calendar />
             </Content>
 
             <Footer>
