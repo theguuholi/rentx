@@ -1,10 +1,15 @@
 import { Container, Details, Name, Brand, About, Rent, Period, Price, Type, CarImage } from "./styles";
 import GasolineSvg from '../../assets/gasoline.svg';
 import { CartDTO } from "../../dtos/CartDTO";
+import { RectButtonProps } from "react-native-gesture-handler";
 
-const Car = ({ data }: { data: CartDTO }) => {
+interface CarProps extends RectButtonProps {
+  data: CartDTO;
+}
+
+const Car = ({ data, ...rest }: CarProps) => {
   return (
-    <Container>
+    <Container {...rest}>
       <Details>
         <Brand>
           {data.brand}

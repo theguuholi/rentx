@@ -17,8 +17,11 @@ import Button from "../../components/Button";
 import { RFValue } from "react-native-responsive-fontsize";
 import theme from "../../styles/theme";
 import { Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const SchedulingDetails = () => {
+    const navigation = useNavigation();
+
     const imagesUrl = [
         'https://pngimg.com/d/mustang_PNG47.png',
         'https://pngimg.com/d/camaro_PNG10164.png',
@@ -28,6 +31,10 @@ const SchedulingDetails = () => {
         'https://pngimg.com/d/mercedes_PNG10164.png',
         'https://pngimg.com/d/bmw_PNG10164.png',
     ]
+
+    const handleConfirmRental = () => {
+        navigation.navigate('SchedulingComplete');
+    }
 
     return (
         <Container testID="scheduling-details">
@@ -92,7 +99,7 @@ const SchedulingDetails = () => {
             </Content>
 
             <Footer>
-                <Button title="Alugar agora" color={theme.colors.success} onPress={() => { }} />
+                <Button title="Alugar agora" color={theme.colors.success} onPress={handleConfirmRental} />
             </Footer>
         </Container>
     )

@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components/native';
 import theme from './src/styles/theme';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import SchedulingComplete from './src/screens/SchedulingComplete';
+import Routes from './src/routes';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -33,7 +33,7 @@ export default function App() {
   return (
     <GestureHandlerRootView>
       <ThemeProvider theme={theme}>
-        <SchedulingComplete />
+        <Routes />
       </ThemeProvider>
     </GestureHandlerRootView>
 

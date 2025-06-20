@@ -1,14 +1,21 @@
-import { useWindowDimensions } from "react-native";
-import { RFValue } from "react-native-responsive-fontsize";
+import { StatusBar, useWindowDimensions } from "react-native";
 import { Container, Content, Footer, Message, Title } from "./styles";
 import LogoSvg from '../../assets/logo_background_gray.svg';
 import DoneSvg from '../../assets/done.svg';
 import ConfirmButton from "../../components/ConfirmButton";
+import { useNavigation } from "@react-navigation/native";
 
 const SchedulingComplete = () => {
     const { width } = useWindowDimensions();
+    const navigation = useNavigation();
+
+    const handleConfirmRental = () => {
+        navigation.navigate('Home');
+    }
+
     return (
         <Container testID="scheduling-complete">
+            <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
             <LogoSvg width={width}  />
 
             <Content>
@@ -21,7 +28,7 @@ const SchedulingComplete = () => {
             </Content>
 
             <Footer>
-                <ConfirmButton title="OK" />
+                <ConfirmButton title="OK" onPress={handleConfirmRental} />
             </Footer>
 
         </Container>

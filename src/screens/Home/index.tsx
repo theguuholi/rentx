@@ -4,8 +4,10 @@ import Logo from '../../assets/logo.svg';
 import { RFValue } from "react-native-responsive-fontsize";
 import Car from "../../components/Car";
 import { CartDTO } from "../../dtos/CartDTO";
+import { useNavigation } from "@react-navigation/native";
 
 const Home = () => {
+  const navigation = useNavigation();
   const cars = [
     {
       id: '1',
@@ -39,8 +41,12 @@ const Home = () => {
     }
   ]
 
+  const handleCarDetails = (car: CartDTO) => {
+    navigation.navigate('CarDetails', { car });
+  }
+
   return (
-    <Container>
+    <Container testID="home">
       <StatusBar style="light" backgroundColor="transparent" translucent />
       <Header>
         <HeaderContent>
@@ -54,7 +60,7 @@ const Home = () => {
       <CarList
         data={cars}
         keyExtractor={(item: CartDTO) => item.id}
-        renderItem={({ item }: { item: CartDTO }) => <Car data={item} />}
+        renderItem={({ item }: { item: CartDTO }) => <Car data={item} onPress={() => handleCarDetails(item)} />}
       />
     </Container>
   );

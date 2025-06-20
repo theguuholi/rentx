@@ -13,8 +13,11 @@ import GasolineSvg from '../../assets/gasoline.svg';
 import ExchangeSvg from '../../assets/exchange.svg';
 import PeopleSvg from '../../assets/people.svg';
 import Button from "../../components/Button";
+import { useNavigation } from "@react-navigation/native";
 
 const CarDetails = () => {
+    const navigation = useNavigation();
+
     const imagesUrl = [
         'https://pngimg.com/d/mustang_PNG47.png',
         'https://pngimg.com/d/camaro_PNG10164.png',
@@ -24,6 +27,10 @@ const CarDetails = () => {
         'https://pngimg.com/d/mercedes_PNG10164.png',
         'https://pngimg.com/d/bmw_PNG10164.png',
     ]
+
+    const handleConfirmRental = () => {
+        navigation.navigate('Scheduling');
+    }
 
     return (
         <Container testID="car-details">
@@ -63,7 +70,7 @@ const CarDetails = () => {
             </Content>
 
             <Footer>
-                <Button title="Confirmar" />
+                <Button title="Escolher período do aluguel" onPress={handleConfirmRental} />
             </Footer>
         </Container>
     )

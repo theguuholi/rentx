@@ -5,8 +5,15 @@ import ArrowSvg from "../../assets/arrow.svg";
 import { StatusBar } from "react-native";
 import Button from "../../components/Button";
 import Calendar from "../../components/Calendar";
+import { useNavigation } from "@react-navigation/native";
 
-const Schedulling = () => {
+const Scheduling = () => {
+    const navigation = useNavigation();
+
+    const handleConfirmRental = () => {
+        navigation.navigate('SchedulingDetails');
+    }
+
     return (
         <Container>
             <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
@@ -38,11 +45,11 @@ const Schedulling = () => {
             </Content>
 
             <Footer>
-                <Button title="Confirmar" />
+                <Button title="Confirmar" onPress={handleConfirmRental} />
             </Footer>
 
         </Container>
     );
 };
 
-export default Schedulling;
+export default Scheduling;
