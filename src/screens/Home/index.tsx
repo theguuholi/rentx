@@ -11,7 +11,7 @@ import Loading from "../../components/Loading";
 
 const Home = () => {
   const navigation = useNavigation<any>();
-
+  
   const [cars, setCars] = useState<CartDTO[]>([]);
   const [loading, setLoading] = useState(true);
   const fetchCars = async () => {

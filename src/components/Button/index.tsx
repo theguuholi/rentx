@@ -1,5 +1,5 @@
 import { Container, Title } from "./styles";
-import { useTheme } from "styled-components";
+import { useTheme } from "styled-components/native";
 
 interface Props {
     title: string;

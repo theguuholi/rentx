@@ -1,15 +1,17 @@
 import { Container, Details, Name, Brand, About, Rent, Period, Price, Type, CarImage } from "./styles";
-import GasolineSvg from '../../assets/gasoline.svg';
 import { CartDTO } from "../../dtos/CartDTO";
 import { RectButtonProps } from "react-native-gesture-handler";
+import { getAcessoryIcon } from "../../utils/getAcessoryIcon";
 
 interface CarProps extends RectButtonProps {
   data: CartDTO;
 }
 
 const Car = ({ data, ...rest }: CarProps) => {
+  const MotorIcon = getAcessoryIcon(data.fuel_type as any);
+  
   return (
-    <Container {...rest}>
+    <Container {...rest} testID="car-container">
       <Details>
         <Brand>
           {data.brand}
@@ -30,7 +32,7 @@ const Car = ({ data, ...rest }: CarProps) => {
           </Rent>
 
           <Type>
-            <GasolineSvg />
+            <MotorIcon />
           </Type>
         </About>
       </Details>

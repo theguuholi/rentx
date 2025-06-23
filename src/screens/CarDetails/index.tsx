@@ -6,66 +6,58 @@ import {
     Content, Description, Details, Footer, Header, Name, Period, Price, Rent
 } from "./styles";
 
-import SpeedSvg from '../../assets/speed.svg';
-import AccelerationSvg from '../../assets/acceleration.svg';
-import ForceSvg from '../../assets/force.svg';
-import GasolineSvg from '../../assets/gasoline.svg';
-import ExchangeSvg from '../../assets/exchange.svg';
-import PeopleSvg from '../../assets/people.svg';
+
 import Button from "../../components/Button";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { CartDTO } from "../../dtos/CartDTO";
+import { getAcessoryIcon } from "../../utils/getAcessoryIcon";
 
 const CarDetails = () => {
-    const navigation = useNavigation();
-
-    const imagesUrl = [
-        'https://pngimg.com/d/mustang_PNG47.png',
-        'https://pngimg.com/d/camaro_PNG10164.png',
-        'https://pngimg.com/d/porsche_PNG10164.png',
-        'https://pngimg.com/d/ferrari_PNG10164.png',
-        'https://pngimg.com/d/lamborghini_PNG10164.png',
-        'https://pngimg.com/d/mercedes_PNG10164.png',
-        'https://pngimg.com/d/bmw_PNG10164.png',
-    ]
+    const navigation = useNavigation<any>();
+    const route = useRoute();
+    const { car } = route.params as { car: CartDTO };
 
     const handleConfirmRental = () => {
         navigation.navigate('Scheduling');
     }
 
+    const handleGoBack = () => {
+        navigation.goBack();
+    }
+
     return (
         <Container testID="car-details">
             <Header>
-                <BackButton onPress={() => { }} />
+                <BackButton onPress={handleGoBack} />
             </Header>
 
             <CarImages>
-                <ImageSlider imagesUrl={imagesUrl} />
+                <ImageSlider imagesUrl={car.photos} />
             </CarImages>
 
             <Content>
                 <Details>
                     <Description>
-                        <Brand>Lamborguini</Brand>
-                        <Name>Huracan</Name>
+                        <Brand>{car.brand}</Brand>
+                        <Name>{car.name}</Name>
                     </Description>
 
                     <Rent>
-                        <Period>Ao Dia</Period>
-                        <Price>150</Price>
+                        <Period>{car.rent.period}</Period>
+                        <Price>R$ {car.rent.price}</Price>
                     </Rent>
                 </Details>
 
                 <Acessories>
-                    <Acessory name="380Km/h" icon={SpeedSvg} />
-                    <Acessory name="3.2s" icon={AccelerationSvg} />
-                    <Acessory name="825 hp" icon={ForceSvg} />
-                    <Acessory name="Gasolina" icon={GasolineSvg} />
-                    <Acessory name="Auto" icon={ExchangeSvg} />
-                    <Acessory name="2 pessoas" icon={PeopleSvg} />
+                    {
+                        car.accessories.map((accessory) => (
+                            <Acessory key={accessory.type} name={accessory.name} icon={getAcessoryIcon(accessory.type as any)} />
+                        ))
+                    }
                 </Acessories>
 
                 <About>
-                    Este é um automóvel desportivo. Fabricado em 2020, o Huracan é um dos carros mais rápidos do mundo.
+                    {car.about}
                 </About>
             </Content>
 
