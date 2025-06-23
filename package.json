@@ -46,6 +46,7 @@
     "jest-expo": "~53.0.7",
     "jest-preview": "^0.3.1",
     "jest-styled-components": "^7.2.0",
+    "json-server": "^1.0.0-beta.3",
     "react-native-svg-transformer": "^1.5.1",
     "typescript": "~5.8.3"
   },
