@@ -15,4 +15,13 @@ describe('Home', () => {
 
     expect(getByText('Total de 12 carros')).toBeTruthy();
   });
+
+  it('should render loading', () => {
+    const { getByTestId } = render(
+      <Home />,
+      {
+        wrapper: Providers
+      }
+    );
+  });
 })

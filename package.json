@@ -8,7 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --watchAll",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "api": "json-server ./src/services/server.json --watch --host 192.168.0.11 --port 3333"
   },
   "dependencies": {
     "@expo-google-fonts/archivo": "^0.4.1",
@@ -16,6 +17,7 @@
     "@expo/metro-runtime": "~5.0.4",
     "@react-navigation/native": "^7.1.13",
     "@react-navigation/stack": "^7.3.6",
+    "axios": "^1.10.0",
     "expo": "~53.0.11",
     "expo-font": "~13.3.1",
     "expo-splash-screen": "~0.30.9",
