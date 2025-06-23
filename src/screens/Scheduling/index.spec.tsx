@@ -4,14 +4,12 @@ import { Providers } from "../../utils/test-utils";
 
 describe("Schedulling", () => {
     it("should show correctly", async () => {
-        const { getByTestId, debug } = render(<Schedulling />, {
-            wrapper: Providers
+        const { getByTestId } = render(<Schedulling />, {
+            wrapper: Providers,
         });
 
- 
         const backButton = getByTestId('back-button');
         const confirmButton = getByTestId('button-container');
-
 
         await act(async () => {
             backButton.props.onPress();

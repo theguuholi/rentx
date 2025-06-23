@@ -9,7 +9,7 @@ describe('Home', () => {
     const { getByText } = render(
       <Home />,
       {
-        wrapper: Providers
+        wrapper: Providers,
       }
     );
 

@@ -6,7 +6,7 @@ describe('CarDetails', () => {
     it('should render correctly', async() => {
         const { getByTestId } = render(
             <CarDetails />,
-            { wrapper: Providers }
+            { wrapper: Providers}
         );
 
         await act(async () => {
