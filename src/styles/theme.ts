@@ -11,6 +11,7 @@ export default {
         shape: '#E1E1E8',
         shape_dark: '#29292E',
         header: '#1B1B1F',
+        main_light: '#FDECEA',
     },
     fonts: {
         primary_400: 'Inter_400Regular',
