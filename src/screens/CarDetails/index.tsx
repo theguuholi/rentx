@@ -18,7 +18,9 @@ const CarDetails = () => {
     const { car } = route.params as { car: CartDTO };
 
     const handleConfirmRental = () => {
-        navigation.navigate('Scheduling');
+        navigation.navigate('Scheduling', {
+            car,
+        });
     }
 
     const handleGoBack = () => {

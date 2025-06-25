@@ -17,10 +17,13 @@ import Button from "../../components/Button";
 import { RFValue } from "react-native-responsive-fontsize";
 import theme from "../../styles/theme";
 import { Feather } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { CartDTO } from "../../dtos/CartDTO";
 
 const SchedulingDetails = () => {
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>();
+    const route = useRoute();
+    const { car, dates } = route.params as { car: CartDTO; dates: string[] };
 
     const imagesUrl = [
         'https://pngimg.com/d/mustang_PNG47.png',
@@ -49,13 +52,13 @@ const SchedulingDetails = () => {
             <Content>
                 <Details>
                     <Description>
-                        <Brand>Lamborguini</Brand>
-                        <Name>Huracan</Name>
+                        <Brand>{car.brand}</Brand>
+                        <Name>{car.name}</Name>
                     </Description>
 
                     <Rent>
                         <Period>Ao Dia</Period>
-                        <Price>R$ 150,00</Price>
+                        <Price>R$ {car.rent.price}</Price>
                     </Rent>
                 </Details>
 
@@ -75,13 +78,13 @@ const SchedulingDetails = () => {
 
                     <DateInfo>
                         <DateTitle>DE</DateTitle>
-                        <DateValue>18/06/2021</DateValue>
+                        <DateValue>{dates[0]}</DateValue>
                     </DateInfo>
                     <Feather name="chevron-right" size={RFValue(24)} color={theme.colors.title} />
 
                     <DateInfo>
                         <DateTitle>DE</DateTitle>
-                        <DateValue>18/06/2021</DateValue>
+                        <DateValue>{dates[dates.length - 1]}</DateValue>
                     </DateInfo>
                 </RentalPeriod>
 
@@ -89,10 +92,10 @@ const SchedulingDetails = () => {
                     <RentalPriceLabel>TOTAL</RentalPriceLabel>
                     <RentalPriceDetails>
                         <RentalPriceQuota>
-                            R$ 580,00 x 3 diarias
+                            R$ {car.rent.price} x {dates.length} diárias
                         </RentalPriceQuota>
                         <RentalPriceTotal>
-                            R$ 2900,00
+                            R$ {car.rent.price * dates.length}
                         </RentalPriceTotal>
                     </RentalPriceDetails>
                 </RentalPrice>
