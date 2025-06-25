@@ -1,10 +1,10 @@
-import { render } from "@testing-library/react-native";
+
 import Routes from ".";
-import { Providers } from "../utils/test-utils";
+import { renderWithTheme } from "../utils/test-utils";
 
 describe('Routes', () => {
     it('should render correctly', () => {
-        const { getByTestId } = render(<Routes />, { wrapper: Providers });
+        const { getByTestId } = renderWithTheme(Routes)
         expect(getByTestId('home')).toBeTruthy();
     });
 });

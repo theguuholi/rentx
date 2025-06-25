@@ -28,7 +28,7 @@ const CarDetails = () => {
     return (
         <Container testID="car-details">
             <Header>
-                <BackButton onPress={handleGoBack} />
+                <BackButton onPress={handleGoBack} testID="back-button" />
             </Header>
 
             <CarImages>
@@ -38,31 +38,38 @@ const CarDetails = () => {
             <Content>
                 <Details>
                     <Description>
-                        <Brand>{car.brand}</Brand>
-                        <Name>{car.name}</Name>
+                        <Brand testID="car-brand">{car.brand}</Brand>
+                        <Name testID="car-name">{car.name}</Name>
                     </Description>
 
                     <Rent>
-                        <Period>{car.rent.period}</Period>
-                        <Price>R$ {car.rent.price}</Price>
+                        <Period testID="rent-period">{car.rent.period}</Period>
+                        <Price testID="rent-price">R$ {car.rent.price}</Price>
                     </Rent>
                 </Details>
 
-                <Acessories>
+                <Acessories testID="accessories-list">
                     {
                         car.accessories.map((accessory) => (
-                            <Acessory key={accessory.type} name={accessory.name} icon={getAcessoryIcon(accessory.type as any)} />
+                            <Acessory 
+                                key={accessory.type} 
+                                name={accessory.name} 
+                                icon={getAcessoryIcon(accessory.type as any)}
+                            />
                         ))
                     }
                 </Acessories>
 
-                <About>
+                <About testID="car-about">
                     {car.about}
                 </About>
             </Content>
 
             <Footer>
-                <Button title="Escolher período do aluguel" onPress={handleConfirmRental} />
+                <Button 
+                    title="Escolher período do aluguel" 
+                    onPress={handleConfirmRental}
+                />
             </Footer>
         </Container>
     )

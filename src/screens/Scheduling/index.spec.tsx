@@ -1,19 +1,27 @@
-import { act, render } from "@testing-library/react-native";
+import { act, fireEvent } from "@testing-library/react-native";
 import Schedulling from ".";
-import { Providers } from "../../utils/test-utils";
+import { createMockNavigation, renderWithTheme } from "../../utils/test-utils";
+import { useNavigation } from "@react-navigation/native";
+
+jest.mock('@react-navigation/native', () => ({
+    useNavigation: jest.fn(),
+    useRoute: jest.fn()
+}));
+
+const mockNavigation = createMockNavigation();
+(useNavigation as jest.Mock).mockReturnValue(mockNavigation);
 
 describe("Schedulling", () => {
     it("should show correctly", async () => {
-        const { getByTestId } = render(<Schedulling />, {
-            wrapper: Providers,
-        });
+        const { getByTestId } = renderWithTheme(<Schedulling />)
 
         const backButton = getByTestId('back-button');
         const confirmButton = getByTestId('button-container');
 
         await act(async () => {
-            backButton.props.onPress();
+            fireEvent.press(backButton);
+            fireEvent.press(confirmButton);
             expect(confirmButton).toBeTruthy();
-        });
+        })
     });
 });

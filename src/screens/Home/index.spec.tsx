@@ -1,27 +1,25 @@
-import { render } from '@testing-library/react-native';
+
 import Home from '.';
 import React from 'react';
-import { Providers } from '../../utils/test-utils';
+import { createMockNavigation, renderWithTheme } from '../../utils/test-utils';
+import { useNavigation } from '@react-navigation/native';
 
+jest.mock('@react-navigation/native', () => ({
+  useNavigation: jest.fn(),
+  useRoute: jest.fn()
+}));
+
+const mockNavigation = createMockNavigation();
+(useNavigation as jest.Mock).mockReturnValue(mockNavigation);
 
 describe('Home', () => {
   it('should render correctly', () => {
-    const { getByText } = render(
-      <Home />,
-      {
-        wrapper: Providers,
-      }
-    );
+    const { getByText } = renderWithTheme(<Home />)
 
     expect(getByText('Total de 12 carros')).toBeTruthy();
   });
 
   it('should render loading', () => {
-    const { getByTestId } = render(
-      <Home />,
-      {
-        wrapper: Providers
-      }
-    );
+    const { getByTestId } = renderWithTheme(<Home />)
   });
 })

@@ -39,7 +39,7 @@ const SchedulingDetails = () => {
     return (
         <Container testID="scheduling-details">
             <Header>
-                <BackButton onPress={() => { }} />
+                <BackButton onPress={() => { navigation.goBack() }} />
             </Header>
 
             <CarImages>

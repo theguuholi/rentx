@@ -1,11 +1,11 @@
 import { render } from "@testing-library/react-native";
-import { Providers } from "../../utils/test-utils";
+import { renderWithTheme } from "../../utils/test-utils";
 import Button from ".";
 import theme from "../../styles/theme";
 
 describe('Button', () => {
     it('should render correctly', () => {
-        const { getByText } = render(<Button title="Test" />, { wrapper: Providers });
+        const { getByText } = renderWithTheme(<Button title="Test" />)
         expect(getByText('Test')).toBeTruthy();
     });
     // it('should render with custom color when color prop is provided', () => {

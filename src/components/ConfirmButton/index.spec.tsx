@@ -1,10 +1,10 @@
-import { render } from "@testing-library/react-native";
+
 import ConfirmButton from ".";
-import { Providers } from "../../utils/test-utils";
+import { renderWithTheme } from "../../utils/test-utils";
 
 describe('ConfirmButton', () => {
     it('should render correctly', () => {
-        const { getByText } = render(<ConfirmButton title="OK" />, { wrapper: Providers });
+        const { getByText } = renderWithTheme(<ConfirmButton title="OK" />)
         expect(getByText('OK')).toBeTruthy();
     });
 });
