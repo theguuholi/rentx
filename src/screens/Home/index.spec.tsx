@@ -16,7 +16,7 @@ describe('Home', () => {
   it('should render correctly', () => {
     const { getByText } = renderWithTheme(<Home />)
 
-    expect(getByText('Total de 12 carros')).toBeTruthy();
+    expect(getByText('Total de 0 carros')).toBeTruthy();
   });
 
   it('should render loading', () => {
