@@ -1,0 +1,111 @@
+name: Pull Request Checks
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+
+env:
+  NODE_VERSION: '18'
+
+jobs:
+  # Code Quality Checks
+  code-quality:
+    name: Code Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Check for TODO comments
+        run: |
+          if grep -r "TODO\|FIXME\|HACK" src/ --exclude-dir=node_modules; then
+            echo "Found TODO/FIXME/HACK comments. Please address them before merging."
+            exit 1
+          fi
+
+      - name: Check for console.log statements
+        run: |
+          if grep -r "console\.log" src/ --exclude-dir=node_modules; then
+            echo "Found console.log statements. Please remove them before merging."
+            exit 1
+          fi
+
+      - name: Check file sizes
+        run: |
+          find src/ -name "*.tsx" -o -name "*.ts" | xargs wc -l | sort -nr | head -10
+
+  # Dependency Analysis
+  dependency-check:
+    name: Dependency Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Check for outdated dependencies
+        run: yarn outdated || true
+
+      - name: Check for unused dependencies
+        run: npx depcheck || true
+
+  # Bundle Size Check
+  bundle-size:
+    name: Bundle Size Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Check bundle size
+        run: |
+          echo "Bundle size analysis would go here"
+          echo "Consider using tools like expo-bundle-analyzer"
+
+  # Performance Check
+  performance:
+    name: Performance Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run performance checks
+        run: |
+          echo "Performance checks would go here"
+          echo "Consider using tools like lighthouse or web-vitals" 

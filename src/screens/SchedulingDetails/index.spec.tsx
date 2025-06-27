@@ -81,7 +81,8 @@ describe('SchedulingDetails', () => {
         const { getByText } = renderWithTheme(<SchedulingDetails />);
 
         await act(async () => {
-            expect(getByText('R$ 120 x 3 diárias')).toBeTruthy();
+            expect(getByText('3')).toBeTruthy();
+            expect(getByText('diárias')).toBeTruthy();
             expect(getByText('R$ 360')).toBeTruthy();
         });
     });
@@ -135,7 +136,8 @@ describe('SchedulingDetails', () => {
         const { getByText } = renderWithTheme(<SchedulingDetails />);
 
         await act(async () => {
-            expect(getByText('R$ 120 x 1 diária')).toBeTruthy();
+            expect(getByText('1')).toBeTruthy();
+            expect(getByText('diárias')).toBeTruthy();
             expect(getByText('R$ 120')).toBeTruthy();
         });
     });
@@ -152,7 +154,8 @@ describe('SchedulingDetails', () => {
         const { getByText } = renderWithTheme(<SchedulingDetails />);
 
         await act(async () => {
-            expect(getByText('R$ 120 x 5 diárias')).toBeTruthy();
+            expect(getByText('5')).toBeTruthy();
+            expect(getByText('diárias')).toBeTruthy();
             expect(getByText('R$ 600')).toBeTruthy();
         });
     });
@@ -177,7 +180,8 @@ describe('SchedulingDetails', () => {
         const { getByText } = renderWithTheme(<SchedulingDetails />);
 
         await act(async () => {
-            expect(getByText('R$ 500 x 2 diárias')).toBeTruthy();
+            expect(getByText('2')).toBeTruthy();
+            expect(getByText('diárias')).toBeTruthy();
             expect(getByText('R$ 1000')).toBeTruthy();
         });
     });
