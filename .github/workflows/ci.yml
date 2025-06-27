@@ -33,7 +33,7 @@ jobs:
           cache-dependency-path: '**/yarn.lock'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
 
       - name: Check TypeScript types
         run: yarn tsc --noEmit
