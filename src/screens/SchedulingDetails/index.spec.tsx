@@ -78,12 +78,11 @@ describe('SchedulingDetails', () => {
     });
 
     it('should display rental price calculation correctly', async () => {
-        const { getByText } = renderWithTheme(<SchedulingDetails />);
+        const { getByTestId } = renderWithTheme(<SchedulingDetails />);
 
         await act(async () => {
-            expect(getByText('3')).toBeTruthy();
-            expect(getByText('diárias')).toBeTruthy();
-            expect(getByText('R$ 360')).toBeTruthy();
+            expect(getByTestId('rental-price-quota')).toHaveTextContent('R$ 120 x 3 diárias');
+            expect(getByTestId('rental-price-total')).toHaveTextContent('R$ 360');
         });
     });
 
@@ -133,12 +132,12 @@ describe('SchedulingDetails', () => {
         };
         (useRoute as jest.Mock).mockReturnValue(singleDayRoute);
 
-        const { getByText } = renderWithTheme(<SchedulingDetails />);
+        const { getByTestId } = renderWithTheme(<SchedulingDetails />);
 
         await act(async () => {
-            expect(getByText('1')).toBeTruthy();
-            expect(getByText('diárias')).toBeTruthy();
-            expect(getByText('R$ 120')).toBeTruthy();
+            // Check for the total price which should be visible            
+            expect(getByTestId('rental-price-quota')).toHaveTextContent('R$ 120 x 1 diárias');
+            expect(getByTestId('rental-price-total')).toHaveTextContent('R$ 120');
         });
     });
 
@@ -151,12 +150,12 @@ describe('SchedulingDetails', () => {
         };
         (useRoute as jest.Mock).mockReturnValue(multipleDayRoute);
 
-        const { getByText } = renderWithTheme(<SchedulingDetails />);
+        const { getByTestId } = renderWithTheme(<SchedulingDetails />);
 
         await act(async () => {
-            expect(getByText('5')).toBeTruthy();
-            expect(getByText('diárias')).toBeTruthy();
-            expect(getByText('R$ 600')).toBeTruthy();
+            // Check for the total price which should be visible            
+            expect(getByTestId('rental-price-quota')).toHaveTextContent('R$ 120 x 5 diárias');
+            expect(getByTestId('rental-price-total')).toHaveTextContent('R$ 600');
         });
     });
 
@@ -177,12 +176,15 @@ describe('SchedulingDetails', () => {
         };
         (useRoute as jest.Mock).mockReturnValue(expensiveCarRoute);
 
-        const { getByText } = renderWithTheme(<SchedulingDetails />);
+        const { getByText, getByTestId } = renderWithTheme(<SchedulingDetails />);
 
         await act(async () => {
-            expect(getByText('2')).toBeTruthy();
-            expect(getByText('diárias')).toBeTruthy();
-            expect(getByText('R$ 1000')).toBeTruthy();
+            // Check for the total price which should be visible            
+            // Check for the word "diárias" which should be visible
+            
+            // Check for the rental price details
+            expect(getByTestId('rental-price-quota')).toHaveTextContent('R$ 500 x 2 diárias');
+            expect(getByTestId('rental-price-total')).toHaveTextContent('R$ 1000');
         });
     });
 }); 

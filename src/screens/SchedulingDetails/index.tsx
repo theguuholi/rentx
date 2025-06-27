@@ -91,10 +91,10 @@ const SchedulingDetails = () => {
                 <RentalPrice>
                     <RentalPriceLabel>TOTAL</RentalPriceLabel>
                     <RentalPriceDetails>
-                        <RentalPriceQuota>
+                        <RentalPriceQuota testID="rental-price-quota">
                             R$ {car.rent.price} x {dates.length} diárias
                         </RentalPriceQuota>
-                        <RentalPriceTotal>
+                        <RentalPriceTotal testID="rental-price-total">
                             R$ {car.rent.price * dates.length}
                         </RentalPriceTotal>
                     </RentalPriceDetails>
