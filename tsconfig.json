@@ -15,14 +15,6 @@
     "jsx": "react-native",
     "allowSyntheticDefaultImports": true
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules",
-    "android",
-    "ios",
-    "coverage"
-  ]
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "android", "ios", "coverage"]
 }
