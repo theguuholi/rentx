@@ -74,4 +74,5 @@ const Calendar = ({ markedDates, onDayPress }: CalendarProps) => {
   );
 };
 
-export { Calendar, DayProps, MarkedDateProps, generateInterval };
+export { Calendar, generateInterval };
+export type { DayProps, MarkedDateProps };
