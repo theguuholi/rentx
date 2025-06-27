@@ -140,15 +140,19 @@ yarn test:coverage
 ## 🔧 Configuration Files
 
 ### ESLint (`.eslintrc.js`)
+
 Comprehensive linting rules for React Native TypeScript development.
 
 ### Prettier (`.prettierrc`)
+
 Code formatting configuration for consistent code style.
 
 ### Jest (`jest.config.js`)
+
 Test configuration with coverage reporting and proper module mapping.
 
 ### TypeScript (`tsconfig.json`)
+
 Strict TypeScript configuration with React Native support.
 
 ## 🚨 Common Issues & Solutions
@@ -203,16 +207,19 @@ yarn test src/components/Button/index.spec.tsx
 ## 📊 Monitoring & Metrics
 
 ### Code Coverage
+
 - Coverage reports are automatically generated
 - Minimum 80% coverage required
 - Reports available in GitHub Actions artifacts
 
 ### Bundle Size
+
 - Bundle size monitoring (when configured)
 - Size regression detection
 - Optimization recommendations
 
 ### Performance
+
 - Performance regression detection
 - Lighthouse scores (when configured)
 - Core Web Vitals monitoring
@@ -220,18 +227,22 @@ yarn test src/components/Button/index.spec.tsx
 ## 🔄 Workflow Triggers
 
 ### Automatic Triggers
+
 - **Push to main/develop**: Full CI pipeline
 - **Pull Request**: CI + PR-specific checks
 - **Version Tag**: Deployment pipeline
 
 ### Manual Triggers
+
 - **Workflow Dispatch**: Manual pipeline execution
 - **Repository Dispatch**: External trigger support
 
 ## 📝 Best Practices
 
 ### 1. Commit Messages
+
 Use conventional commit format:
+
 ```
 feat: add new button component
 fix: resolve navigation issue
@@ -240,6 +251,7 @@ test: add unit tests for Button component
 ```
 
 ### 2. Branch Naming
+
 ```
 feature/user-authentication
 bugfix/navigation-crash
@@ -247,6 +259,7 @@ hotfix/security-patch
 ```
 
 ### 3. Pull Request Process
+
 1. Create feature branch
 2. Make changes with tests
 3. Run local checks
@@ -255,6 +268,7 @@ hotfix/security-patch
 6. Merge when approved
 
 ### 4. Release Process
+
 1. Create version tag: `git tag v1.0.0`
 2. Push tag: `git push origin v1.0.0`
 3. Deployment pipeline runs automatically
@@ -286,13 +300,15 @@ For issues with the CI/CD pipeline:
 ## 🔄 Updates & Maintenance
 
 ### Regular Maintenance Tasks
+
 - Update dependencies monthly
 - Review and update ESLint rules
 - Monitor pipeline performance
 - Update documentation
 
 ### Pipeline Improvements
+
 - Add new quality checks as needed
 - Optimize build times
 - Enhance security scanning
-- Improve test coverage 
+- Improve test coverage

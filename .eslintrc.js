@@ -1,17 +1,12 @@
 module.exports = {
   root: true,
-  extends: [
-    '@react-native',
-    'prettier',
-  ],
-  plugins: [
-    'prettier',
-  ],
+  extends: ['@react-native', 'prettier'],
+  plugins: ['prettier'],
   rules: {
     // Prettier integration
     'prettier/prettier': 'error',
     'react/react-in-jsx-scope': 'off',
-    
+
     // General rules
     'no-console': 'warn',
     'no-debugger': 'error',
@@ -23,8 +18,8 @@ module.exports = {
     'no-multiple-empty-lines': ['error', { max: 1 }],
     'eol-last': 'error',
     'comma-dangle': ['error', 'always-multiline'],
-    'semi': ['error', 'always'],
-    'quotes': ['error', 'single', { avoidEscape: true }],
+    semi: ['error', 'always'],
+    quotes: ['error', 'single', { avoidEscape: true }],
   },
   env: {
     'react-native/react-native': true,
@@ -41,4 +36,4 @@ module.exports = {
     'jest.config.js',
     '.eslintrc.js',
   ],
-}; 
+};
