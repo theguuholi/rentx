@@ -1,7 +1,15 @@
 import * as SplashScreen from 'expo-splash-screen';
 
-import { Inter_400Regular, Inter_500Medium, useFonts } from '@expo-google-fonts/inter';
-import { Archivo_400Regular, Archivo_500Medium, Archivo_600SemiBold } from '@expo-google-fonts/archivo';
+import {
+  Inter_400Regular,
+  Inter_500Medium,
+  useFonts,
+} from '@expo-google-fonts/inter';
+import {
+  Archivo_400Regular,
+  Archivo_500Medium,
+  Archivo_600SemiBold,
+} from '@expo-google-fonts/archivo';
 import { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components/native';
 import theme from './src/styles/theme';
@@ -9,7 +17,6 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Routes from './src/routes';
 
 SplashScreen.preventAutoHideAsync();
-
 
 export default function App() {
   const [fontsLoaded, error] = useFonts({
@@ -24,7 +31,7 @@ export default function App() {
     if (fontsLoaded || error) {
       SplashScreen.hideAsync();
     }
-  }, [fontsLoaded]);
+  }, [fontsLoaded, error]);
 
   if (!fontsLoaded && !error) {
     return null;
@@ -36,6 +43,5 @@ export default function App() {
         <Routes />
       </ThemeProvider>
     </GestureHandlerRootView>
-
   );
 }

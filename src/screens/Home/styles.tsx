@@ -1,37 +1,40 @@
-import { FlatList } from "react-native";
-import { RFValue } from "react-native-responsive-fontsize";
-import styled, { DefaultTheme } from "styled-components/native";
-import { CartDTO } from "../../dtos/CartDTO";
+import { FlatList } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
+import styled, { DefaultTheme } from 'styled-components/native';
+import { CartDTO } from '../../dtos/CartDTO';
 
 export const Container = styled.View`
-    flex: 1;
+  flex: 1;
 
-    background-color: ${({ theme }: { theme: DefaultTheme }) => theme.colors.background_primary};
+  background-color: ${({ theme }: { theme: DefaultTheme }) =>
+    theme.colors.background_primary};
 `;
 
 export const Header = styled.View`
-    width: 100%;
-    height: 113px;
-    background-color: ${({ theme }: { theme: DefaultTheme }) => theme.colors.header};
-    justify-content: flex-end;
-    padding: 32px 24px;
+  width: 100%;
+  height: 113px;
+  background-color: ${({ theme }: { theme: DefaultTheme }) =>
+    theme.colors.header};
+  justify-content: flex-end;
+  padding: 32px 24px;
 `;
 
 export const HeaderContent = styled.View`
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const TotalCars = styled.Text`
-    font-size: ${RFValue(15)}px;
-    font-family: ${({ theme }: { theme: DefaultTheme }) => theme.fonts.primary_400};
-    color: ${({ theme }: { theme: DefaultTheme }) => theme.colors.text};
+  font-size: ${RFValue(15)}px;
+  font-family: ${({ theme }: { theme: DefaultTheme }) =>
+    theme.fonts.primary_400};
+  color: ${({ theme }: { theme: DefaultTheme }) => theme.colors.text};
 `;
 
 export const CarList = styled(FlatList as new () => FlatList<CartDTO>).attrs({
-    contentContainerStyle: {
-        padding: 24
-    },
-    showsVerticalScrollIndicator: false
+  contentContainerStyle: {
+    padding: 24,
+  },
+  showsVerticalScrollIndicator: false,
 })``;
