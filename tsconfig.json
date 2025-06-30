@@ -16,5 +16,6 @@
     "allowSyntheticDefaultImports": true
   },
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "android", "ios", "coverage"]
+  "exclude": ["node_modules", "android", "ios", "coverage"],
+  "extends": "expo/tsconfig.base"
 }
