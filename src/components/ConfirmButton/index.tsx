@@ -1,16 +1,16 @@
-import { RectButtonProps } from "react-native-gesture-handler";
-import { Container, Title } from "./styles";
+import { RectButtonProps } from 'react-native-gesture-handler';
+import { Container, Title } from './styles';
 
 interface ConfirmButtonProps extends RectButtonProps {
-    title: string;
+  title: string;
 }
 
 const ConfirmButton = ({ title, ...rest }: ConfirmButtonProps) => {
-    return (
-        <Container {...rest}>
-            <Title>{title}</Title>
-        </Container>
-    )
-}
+  return (
+    <Container {...rest}>
+      <Title>{title}</Title>
+    </Container>
+  );
+};
 
 export default ConfirmButton;

@@ -1,17 +1,17 @@
-import { StatusBar } from "expo-status-bar";
-import { CarList, Container, Header, HeaderContent, TotalCars } from "./styles";
+import { StatusBar } from 'expo-status-bar';
+import { CarList, Container, Header, HeaderContent, TotalCars } from './styles';
 import Logo from '../../assets/logo.svg';
-import { RFValue } from "react-native-responsive-fontsize";
-import Car from "../../components/Car";
-import { CartDTO } from "../../dtos/CartDTO";
-import { useNavigation } from "@react-navigation/native";
-import { api } from "../../services/api";
-import { useEffect, useState } from "react";
-import Loading from "../../components/Loading";
+import { RFValue } from 'react-native-responsive-fontsize';
+import Car from '../../components/Car';
+import { CartDTO } from '../../dtos/CartDTO';
+import { useNavigation } from '@react-navigation/native';
+import { api } from '../../services/api';
+import { useEffect, useState } from 'react';
+import Loading from '../../components/Loading';
 
 const Home = () => {
   const navigation = useNavigation<any>();
-  
+
   const [cars, setCars] = useState<CartDTO[]>([]);
   const [loading, setLoading] = useState(true);
   const fetchCars = async () => {
@@ -20,11 +20,11 @@ const Home = () => {
       const response = await api.get('/cars');
       setCars(response.data);
     } catch (error) {
-      console.log(error);
+      // Handle error silently or implement proper error handling
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
     fetchCars();
@@ -32,31 +32,31 @@ const Home = () => {
 
   const handleCarDetails = (car: CartDTO) => {
     navigation.navigate('CarDetails', { car });
-  }
-
-
+  };
 
   return (
-    <Container testID="home">
-      <StatusBar style="light" backgroundColor="transparent" translucent />
+    <Container testID='home'>
+      <StatusBar style='light' backgroundColor='transparent' translucent />
       <Header>
         <HeaderContent>
           <Logo width={RFValue(108)} height={RFValue(12)} />
-          <TotalCars>
-            Total de {cars.length} carros
-          </TotalCars>
+          <TotalCars>Total de {cars.length} carros</TotalCars>
         </HeaderContent>
       </Header>
 
-      {loading ? <Loading /> : (
-      <CarList
-        data={cars}
-        keyExtractor={(item: CartDTO) => item.id}
-        renderItem={({ item }: { item: CartDTO }) => <Car data={item} onPress={() => handleCarDetails(item)} />}
-      />
+      {loading ? (
+        <Loading />
+      ) : (
+        <CarList
+          data={cars}
+          keyExtractor={(item: CartDTO) => item.id}
+          renderItem={({ item }: { item: CartDTO }) => (
+            <Car data={item} onPress={() => handleCarDetails(item)} />
+          )}
+        />
       )}
     </Container>
   );
 };
 
-export default Home;    
+export default Home;

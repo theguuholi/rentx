@@ -5,20 +5,14 @@ import { CartDTO } from '../dtos/CartDTO';
 import { render } from '@testing-library/react-native';
 
 const MyThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  return React.createElement(
-    ThemeProvider,
-    { theme },
-    children
-  );
-}
+  return React.createElement(ThemeProvider, { theme }, children);
+};
 
 export const renderWithTheme = (component: any) => {
   return render(component, {
-    wrapper: MyThemeProvider
-  })
-}
-
-
+    wrapper: MyThemeProvider,
+  });
+};
 
 // Mock navigation object
 export const createMockNavigation = () => ({
@@ -40,21 +34,24 @@ export const createMockCarRouteParams = (overrides?: Partial<CartDTO>) => ({
       about: 'Test description about the car',
       rent: {
         period: 'Daily',
-        price: 100
+        price: 100,
       },
       thumbnail: 'https://example.com/thumbnail.jpg',
       accessories: [
         { type: 'speed', name: 'Speed Accessory' },
-        { type: 'acceleration', name: 'Acceleration Accessory' }
+        { type: 'acceleration', name: 'Acceleration Accessory' },
       ],
-      photos: ['https://example.com/photo1.jpg', 'https://example.com/photo2.jpg'],
+      photos: [
+        'https://example.com/photo1.jpg',
+        'https://example.com/photo2.jpg',
+      ],
       fuel_type: 'gasoline',
-      ...overrides
-    }
-  }
+      ...overrides,
+    },
+  },
 });
 
 // Generic route params creator
 export const createMockRouteParams = <T>(params: T) => ({
-  params
+  params,
 });

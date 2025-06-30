@@ -1,9 +1,9 @@
-import { render } from "@testing-library/react-native";
-import Loading from ".";
+import { render } from '@testing-library/react-native';
+import Loading from '.';
 
-describe("Loading", () => {
-  it("should render correctly", () => {
+describe('Loading', () => {
+  it('should render correctly', () => {
     const { getByTestId } = render(<Loading />);
-    expect(getByTestId("loading")).toBeTruthy();
+    expect(getByTestId('loading')).toBeTruthy();
   });
 });
