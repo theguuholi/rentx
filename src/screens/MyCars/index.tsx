@@ -1,19 +1,27 @@
 import { useEffect, useState } from 'react';
-import { CartDTO } from '../../dtos/CartDTO';
 import { api } from '../../services/api';
 import Loading from '../../components/Loading';
-import { FlatList, StatusBar } from 'react-native';
+import { Alert, FlatList, StatusBar } from 'react-native';
 import { BackButton } from '../../components/BackButton';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components/native';
-import { Appointments, AppointmentsQuantity, AppointmentsTitle, Container, Content, Header, SubTitle, Title } from './styles';
+import {
+  Appointments,
+  AppointmentsQuantity,
+  AppointmentsTitle,
+  CarList,
+  Container,
+  Content,
+  Header,
+  SubTitle,
+  Title,
+} from './styles';
 import Car from '../../components/Car';
-import { CarDTO } from '../../dtos/CarDTO';
-
+import { CartDTO } from '../../dtos/CartDTO';
 interface CarProps {
   id: string;
   user_id: string;
-  car: CarDTO;
+  car: CartDTO;
   startDate: string;
   endDate: string;
 }
@@ -30,7 +38,6 @@ const MyCars = () => {
 
   const fetchCars = async () => {
     const response = await api.get<CarProps[]>('/schedules_byuser?user_id=1');
-    console.log(response.data);
     setCars(response.data);
   };
 
@@ -38,7 +45,7 @@ const MyCars = () => {
     try {
       fetchCars();
     } catch (error) {
-      console.log(error);
+      Alert.alert('Erro', error as string);
     } finally {
       setLoading(false);
     }
@@ -59,8 +66,7 @@ const MyCars = () => {
         <BackButton onPress={handleGoBack} color={theme.colors.shape} />
         <Title>
           Seus agendamentos, estão aqui.{'\n'}
-          Você vai precisar de um café para começar{'\n'}
-          o seu dia.
+          Você vai precisar de um café para começar{'\n'}o seu dia.
         </Title>
 
         <SubTitle>Conforto, segurança e praticidade</SubTitle>
@@ -73,15 +79,14 @@ const MyCars = () => {
         </Appointments>
       </Content>
 
-      <FlatList
-        data={cars}
-        showsVerticalScrollIndicator={false}
-        keyExtractor={(item: CarProps) => item.id}
-        renderItem={({ item }) => <Car data={item.car} />}
-        contentContainerStyle={{
-          padding: 24,
-        }}
-      />
+      <CarList>
+        <FlatList
+          data={cars}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={(item: CarProps) => item.id}
+          renderItem={({ item }) => <Car data={item.car} />}
+        />
+      </CarList>
     </Container>
   );
 };

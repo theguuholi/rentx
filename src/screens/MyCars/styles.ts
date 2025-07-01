@@ -66,3 +66,7 @@ export const AppointmentsQuantity = styled.Text`
     theme.fonts.primary_500};
   color: ${({ theme }: { theme: DefaultTheme }) => theme.colors.title};
 `;
+
+export const CarList = styled.View`
+  padding: 24px;
+`;
