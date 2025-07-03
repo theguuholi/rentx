@@ -64,6 +64,8 @@ const SchedulingDetails = () => {
     await api.post('/schedules_byuser', {
       user_id: 1,
       car,
+      startDate: rentalPeriod.start,
+      endDate: rentalPeriod.end,
     });
 
     api
