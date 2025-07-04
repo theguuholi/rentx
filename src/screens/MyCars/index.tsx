@@ -63,13 +63,14 @@ const MyCars = () => {
 
   return (
     <Container>
+      <BackButton onPress={handleGoBack} color={theme.colors.shape} />
+
       <Header>
         <StatusBar
           barStyle='light-content'
           backgroundColor='transparent'
           translucent
         />
-        <BackButton onPress={handleGoBack} color={theme.colors.shape} />
         <Title>
           Seus agendamentos, estão aqui.{'\n'}
           Você vai precisar de um café para começar{'\n'}o seu dia.
