@@ -26,7 +26,7 @@ export const Title = styled.Text`
   color: ${({ theme }: { theme: DefaultTheme }) => theme.colors.shape};
   font-family: ${({ theme }: { theme: DefaultTheme }) =>
     theme.fonts.secondary_600};
-  font-size: ${RFValue(30)}px;
+  font-size: ${RFValue(18)}px;
   margin-top: 24px;
 `;
 
@@ -34,7 +34,7 @@ export const SubTitle = styled.Text`
   color: ${({ theme }: { theme: DefaultTheme }) => theme.colors.shape};
   font-family: ${({ theme }: { theme: DefaultTheme }) =>
     theme.fonts.secondary_400};
-  font-size: ${RFValue(15)}px;
+  font-size: ${RFValue(12)}px;
   line-height: ${RFValue(25)}px;
   margin-top: 24px;
 `;
