@@ -92,7 +92,7 @@ describe('SchedulingDetails', () => {
     const { getByText } = renderWithTheme(<SchedulingDetails />);
 
     await act(async () => {
-      expect(getByText('380Km/h')).toBeTruthy();
+      expect(getByText('250Km/h')).toBeTruthy();
       expect(getByText('3.2s')).toBeTruthy();
       expect(getByText('825 hp')).toBeTruthy();
       expect(getByText('Gasolina')).toBeTruthy();

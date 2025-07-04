@@ -1,5 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { CarList, Container, Header, HeaderContent, TotalCars } from './styles';
+import {
+  CarList,
+  Container,
+  Header,
+  HeaderContent,
+  MyCarsButton,
+  TotalCars,
+} from './styles';
 import Logo from '../../assets/logo.svg';
 import { RFValue } from 'react-native-responsive-fontsize';
 import Car from '../../components/Car';
@@ -8,6 +15,8 @@ import { useNavigation } from '@react-navigation/native';
 import { api } from '../../services/api';
 import { useEffect, useState } from 'react';
 import Loading from '../../components/Loading';
+import { Ionicons } from '@expo/vector-icons';
+import theme from '../../styles/theme';
 
 const Home = () => {
   const navigation = useNavigation<any>();
@@ -55,6 +64,10 @@ const Home = () => {
           )}
         />
       )}
+
+      <MyCarsButton onPress={() => navigation.navigate('MyCars')}>
+        <Ionicons name='car-sport' size={32} color={theme.colors.shape} />
+      </MyCarsButton>
     </Container>
   );
 };
