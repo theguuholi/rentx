@@ -45,6 +45,7 @@ interface RentalPeriod {
 
 const SchedulingDetails = () => {
   const navigation = useNavigation<any>();
+  const [loading, setLoading] = useState(false);
   const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>({
     start: '',
     end: '',
@@ -74,9 +75,11 @@ const SchedulingDetails = () => {
         unavailable_dates,
       })
       .then(() => {
+        setLoading(false);
         navigation.navigate('SchedulingComplete');
       })
       .catch(() => {
+        setLoading(false);
         Alert.alert('Não foi possível confirmar o agendamento');
       });
   };
@@ -164,6 +167,8 @@ const SchedulingDetails = () => {
       <Footer>
         <Button
           title='Alugar agora'
+          enabled={!loading}
+          loading={loading}
           color={theme.colors.success}
           onPress={handleConfirmRental}
         />
