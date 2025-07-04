@@ -1,7 +1,9 @@
-import { Button, StyleSheet } from 'react-native';
+import { Button, Dimensions, StyleSheet } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { Container } from './styles';
 import { useEffect } from 'react';
+
+const WIDTH = Dimensions.get('window').width;
 
 const Splash = () => {
     const positionX = useSharedValue(0);
@@ -15,7 +17,7 @@ const Splash = () => {
     });
 
     const handleAnimationPosition = () => {
-        positionX.value = withTiming(Math.random() * 100, { duration: 1000 });
+        positionX.value = withTiming(Math.random() * (WIDTH - 100), { duration: 1000 });
     };
 
     return (
