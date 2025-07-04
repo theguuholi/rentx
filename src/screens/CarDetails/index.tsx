@@ -4,10 +4,10 @@ import ImageSlider from '../../components/ImageSlider';
 import {
   About,
   Acessories,
+  AnimatedScrollView,
   Brand,
   CarImages,
   Container,
-  Content,
   Description,
   Details,
   Footer,
@@ -22,10 +22,29 @@ import Button from '../../components/Button';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { CartDTO } from '../../dtos/CartDTO';
 import { getAcessoryIcon } from '../../utils/getAcessoryIcon';
+import { useSharedValue, useAnimatedScrollHandler, useAnimatedStyle, interpolate, Extrapolation } from 'react-native-reanimated';
+import { Animated, StatusBar } from 'react-native';
 
 const CarDetails = () => {
   const navigation = useNavigation<any>();
   const route = useRoute();
+  const scrollY = useSharedValue(0);
+  const scrollHandler = useAnimatedScrollHandler({
+    onScroll: (event) => {
+      scrollY.value = event.contentOffset.y;
+    },
+  });
+
+  const headerStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{
+        translateY: interpolate(scrollY.value, [0, 200], [0, -200], Extrapolation.CLAMP),
+        opacity: interpolate(scrollY.value, [0, 200], [1, 0], Extrapolation.CLAMP),
+      }],
+    };
+  });
+
+
   const { car } = route.params as { car: CartDTO };
 
   const handleConfirmRental = () => {
@@ -40,15 +59,26 @@ const CarDetails = () => {
 
   return (
     <Container testID='car-details'>
-      <Header>
-        <BackButton onPress={handleGoBack} testID='back-button' />
-      </Header>
+      <StatusBar
+        barStyle='dark-content'
+        translucent
+        backgroundColor='transparent'
+      />
+      <Animated.View style={headerStyle}>
+        <Header>
+          <BackButton onPress={handleGoBack} testID='back-button' />
+        </Header>
 
-      <CarImages>
-        <ImageSlider imagesUrl={car.photos} />
-      </CarImages>
+        <CarImages>
+          <ImageSlider imagesUrl={car.photos} />
+        </CarImages>
+      </Animated.View>
 
-      <Content>
+
+      <AnimatedScrollView
+        onScroll={scrollHandler}
+        scrollEventThrottle={16}
+      >
         <Details>
           <Description>
             <Brand testID='car-brand'>{car.brand}</Brand>
@@ -72,7 +102,11 @@ const CarDetails = () => {
         </Acessories>
 
         <About testID='car-about'>{car.about}</About>
-      </Content>
+        <About testID='car-about'>{car.about}</About>
+        <About testID='car-about'>{car.about}</About>
+        <About testID='car-about'>{car.about}</About>
+        <About testID='car-about'>{car.about}</About>
+      </AnimatedScrollView>
 
       <Footer>
         <Button

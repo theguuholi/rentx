@@ -3,6 +3,7 @@ import {
   getStatusBarHeight,
 } from 'react-native-iphone-x-helper';
 import { RFValue } from 'react-native-responsive-fontsize';
+import Animated from 'react-native-reanimated';
 import styled, { DefaultTheme } from 'styled-components/native';
 
 export const Container = styled.View`
@@ -25,7 +26,7 @@ export const CarImages = styled.View`
   margin-top: ${getStatusBarHeight() + 32}px;
 `;
 
-export const Content = styled.ScrollView.attrs({
+export const AnimatedScrollView = styled(Animated.ScrollView).attrs({
   contentContainerStyle: {
     padding: 24,
     alignItems: 'center',
