@@ -5,12 +5,14 @@ import SchedulingDetails from '../screens/SchedulingDetails';
 import SchedulingComplete from '../screens/SchedulingComplete';
 import Scheduling from '../screens/Scheduling';
 import MyCars from '../screens/MyCars';
+import Splash from '../screens/Splash';
 
 const { Navigator, Screen } = createStackNavigator();
 
 const StackRoutes = () => {
   return (
     <Navigator screenOptions={{ headerShown: false }}>
+      <Screen name='Splash' component={Splash} />
       <Screen name='Home' component={Home} />
       <Screen name='CarDetails' component={CarDetails} />
       <Screen name='Scheduling' component={Scheduling} />
