@@ -18,7 +18,9 @@ jest.mock('@react-navigation/native', () => ({
 // Mock API
 jest.mock('../../services/api', () => ({
   api: {
-    get: jest.fn(() => new Promise(resolve => setTimeout(() => resolve({ data: [] }), 200))),
+    get: jest.fn(
+      () => new Promise(resolve => setTimeout(() => resolve({ data: [] }), 200))
+    ),
   },
 }));
 
@@ -70,4 +72,4 @@ describe('MyCars Screen', () => {
     // Check if the CarList container is rendered
     expect(getByTestId('car-list')).toBeTruthy();
   });
-}); 
+});

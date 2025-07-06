@@ -22,28 +22,46 @@ import Button from '../../components/Button';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { CartDTO } from '../../dtos/CartDTO';
 import { getAcessoryIcon } from '../../utils/getAcessoryIcon';
-import { useSharedValue, useAnimatedScrollHandler, useAnimatedStyle, interpolate, Extrapolation } from 'react-native-reanimated';
-import { Animated, StatusBar } from 'react-native';
+import {
+  useSharedValue,
+  useAnimatedScrollHandler,
+  useAnimatedStyle,
+  interpolate,
+  Extrapolation,
+} from 'react-native-reanimated';
+import { Animated, StatusBar, StyleSheet } from 'react-native';
+import theme from '../../styles/theme';
 
 const CarDetails = () => {
   const navigation = useNavigation<any>();
   const route = useRoute();
   const scrollY = useSharedValue(0);
   const scrollHandler = useAnimatedScrollHandler({
-    onScroll: (event) => {
+    onScroll: event => {
       scrollY.value = event.contentOffset.y;
     },
   });
 
   const headerStyle = useAnimatedStyle(() => {
     return {
-      transform: [{
-        translateY: interpolate(scrollY.value, [0, 200], [0, -200], Extrapolation.CLAMP),
-        opacity: interpolate(scrollY.value, [0, 200], [1, 0], Extrapolation.CLAMP),
-      }],
+      transform: [
+        {
+          translateY: interpolate(
+            scrollY.value,
+            [0, 200],
+            [0, -200],
+            Extrapolation.CLAMP
+          ),
+          opacity: interpolate(
+            scrollY.value,
+            [0, 200],
+            [1, 0],
+            Extrapolation.CLAMP
+          ),
+        },
+      ],
     };
   });
-
 
   const { car } = route.params as { car: CartDTO };
 
@@ -57,6 +75,12 @@ const CarDetails = () => {
     navigation.goBack();
   };
 
+  const sliderCarsStyleAnimation = useAnimatedStyle(() => {
+    return {
+      opacity: interpolate(scrollY.value, [0, 100], [1, 0], Extrapolation.CLAMP),
+    };
+  });
+
   return (
     <Container testID='car-details'>
       <StatusBar
@@ -64,21 +88,17 @@ const CarDetails = () => {
         translucent
         backgroundColor='transparent'
       />
-      <Animated.View style={headerStyle}>
+      <Animated.View style={[styles.header, headerStyle, { backgroundColor: theme.colors.background_secondary }]}>
         <Header>
           <BackButton onPress={handleGoBack} testID='back-button' />
         </Header>
 
-        <CarImages>
+        <CarImages style={sliderCarsStyleAnimation}>
           <ImageSlider imagesUrl={car.photos} />
         </CarImages>
       </Animated.View>
 
-
-      <AnimatedScrollView
-        onScroll={scrollHandler}
-        scrollEventThrottle={16}
-      >
+      <AnimatedScrollView onScroll={scrollHandler} scrollEventThrottle={16}>
         <Details>
           <Description>
             <Brand testID='car-brand'>{car.brand}</Brand>
@@ -117,5 +137,13 @@ const CarDetails = () => {
     </Container>
   );
 };
+
+const styles = StyleSheet.create({
+  header: {
+    position: 'absolute',
+    overflow: 'hidden',
+    zIndex: 1,
+  },
+});
 
 export default CarDetails;

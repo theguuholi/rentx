@@ -22,13 +22,13 @@ export const Header = styled.View`
   margin-left: 24px;
 `;
 
-export const CarImages = styled.View`
+export const CarImages = styled(Animated.View)`
   margin-top: ${getStatusBarHeight() + 32}px;
 `;
 
 export const AnimatedScrollView = styled(Animated.ScrollView).attrs({
   contentContainerStyle: {
-    padding: 24,
+    paddingTop: getStatusBarHeight() + 160,
     alignItems: 'center',
   },
   showsVerticalScrollIndicator: false,
