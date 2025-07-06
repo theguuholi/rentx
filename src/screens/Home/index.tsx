@@ -17,6 +17,7 @@ import { useEffect, useState } from 'react';
 import Loading from '../../components/Loading';
 import { Ionicons } from '@expo/vector-icons';
 import theme from '../../styles/theme';
+import { BackHandler } from 'react-native';
 
 const Home = () => {
   const navigation = useNavigation<any>();
@@ -37,6 +38,12 @@ const Home = () => {
 
   useEffect(() => {
     fetchCars();
+  }, []);
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () => {
+      return true;
+    });
   }, []);
 
   const handleCarDetails = (car: CartDTO) => {
