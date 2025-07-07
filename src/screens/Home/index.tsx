@@ -14,10 +14,10 @@ import { CartDTO } from '../../dtos/CartDTO';
 import { useNavigation } from '@react-navigation/native';
 import { api } from '../../services/api';
 import { useEffect, useState } from 'react';
-import Loading from '../../components/Loading';
 import { Ionicons } from '@expo/vector-icons';
 import theme from '../../styles/theme';
 import { BackHandler } from 'react-native';
+import { LoadAnimation } from '../../components/LoadAnimation';
 
 const Home = () => {
   const navigation = useNavigation<any>();
@@ -56,12 +56,12 @@ const Home = () => {
       <Header>
         <HeaderContent>
           <Logo width={RFValue(108)} height={RFValue(12)} />
-          <TotalCars>Total de {cars.length} carros</TotalCars>
+          {!loading && <TotalCars>Total de {cars.length} carros</TotalCars>}
         </HeaderContent>
       </Header>
 
       {loading ? (
-        <Loading />
+        <LoadAnimation />
       ) : (
         <CarList
           data={cars}

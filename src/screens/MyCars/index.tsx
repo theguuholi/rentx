@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
-import Loading from '../../components/Loading';
 import { Alert, FlatList, StatusBar } from 'react-native';
 import { BackButton } from '../../components/BackButton';
 import { useNavigation } from '@react-navigation/native';
@@ -24,6 +23,7 @@ import {
 import Car from '../../components/Car';
 import { CartDTO } from '../../dtos/CartDTO';
 import { AntDesign } from '@expo/vector-icons';
+import { LoadAnimation } from '../../components/LoadAnimation';
 interface CarProps {
   id: string;
   user_id: string;
@@ -58,7 +58,7 @@ const MyCars = () => {
   }, []);
 
   if (loading) {
-    return <Loading />;
+    return <LoadAnimation />;
   }
 
   return (
@@ -80,7 +80,7 @@ const MyCars = () => {
       </Header>
 
       {loading ? (
-        <Loading />
+        <LoadAnimation />
       ) : (
         <Content>
           <Appointments>
