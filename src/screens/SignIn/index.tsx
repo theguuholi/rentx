@@ -4,6 +4,7 @@ import { StatusBar } from 'react-native';
 import Button from '../../components/Button';
 import { useTheme } from 'styled-components';
 import Input from '../../components/Input';
+import PasswordInput from '../../components/PasswordInput';
 
 const Signin = () => {
   const theme = useTheme();
@@ -24,6 +25,7 @@ const Signin = () => {
       </Header>
       <Form>
         <Input iconName='mail' placeholder='E-mail' autoCorrect={false} autoCapitalize='none' keyboardType='email-address' />
+        <PasswordInput iconName='lock' placeholder='Senha' autoCorrect={false} autoCapitalize='none' />
       </Form>
 
       <Footer>
