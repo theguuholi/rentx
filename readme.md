@@ -12,3 +12,7 @@ https://cubic-bezier.com/#.17,.67,.83,.67
 
 https://lottiefiles.com
 https://docs.expo.dev/versions/latest/sdk/lottie/
+
+nem sempre uma aplicacao e para ser offline 
+
+o que vale a pena executar offline

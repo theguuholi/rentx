@@ -17,7 +17,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "type-check": "tsc --noEmit",
     "bundle:analyze": "echo 'Bundle analysis not configured yet'",
-    "api": "json-server ./src/services/server.json --watch --host 192.168.0.25 --port 3333"
+    "api": "json-server ./src/services/server.json --watch --host 192.168.0.12 --port 3333"
   },
   "dependencies": {
     "@expo-google-fonts/archivo": "^0.4.1",

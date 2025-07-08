@@ -6,12 +6,14 @@ import SchedulingComplete from '../screens/SchedulingComplete';
 import Scheduling from '../screens/Scheduling';
 import MyCars from '../screens/MyCars';
 import Splash from '../screens/Splash';
+import Signin from '../screens/SignIn';
 
 const { Navigator, Screen } = createStackNavigator();
 
 const StackRoutes = () => {
   return (
     <Navigator screenOptions={{ headerShown: false }}>
+      <Screen name='Signin' component={Signin} />
       <Screen name='Splash' component={Splash} />
       <Screen name='Home' component={Home} options={{ gestureEnabled: false }} />
       <Screen name='CarDetails' component={CarDetails} />

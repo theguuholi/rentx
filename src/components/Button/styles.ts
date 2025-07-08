@@ -15,10 +15,10 @@ export const Container = styled(RectButton)<ButtonProps>`
   background-color: ${({ color }: { color: string }) => color};
 `;
 
-export const Title = styled.Text`
+export const Title = styled.Text<{ light: boolean }>`
   font-family: ${({ theme }: { theme: DefaultTheme }) =>
     theme.fonts.primary_500};
   font-size: ${RFValue(15)}px;
-  color: ${({ theme }: { theme: DefaultTheme }) =>
-    theme.colors.background_secondary};
+  color: ${({ theme, light }) =>
+    light ? theme.colors.header : theme.colors.shape};
 `;
