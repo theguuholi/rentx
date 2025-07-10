@@ -12,8 +12,10 @@ import { useTheme } from 'styled-components';
 import Input from '../../components/Input';
 import PasswordInput from '../../components/PasswordInput';
 import * as Yup from 'yup';
+import { useNavigation } from '@react-navigation/native';
 
 const Signin = () => {
+  const navigation = useNavigation();
   const theme = useTheme();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -84,7 +86,7 @@ const Signin = () => {
               title='Criar conta gratuita'
               light={true}
               color={theme.colors.background_secondary}
-              onPress={() => {}}
+              onPress={() => navigation.navigate('SignUpFirstStep')}
             />
           </Footer>
         </Container>
