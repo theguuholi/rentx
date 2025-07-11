@@ -31,7 +31,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import theme from '../../styles/theme';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { CartDTO } from '../../dtos/CartDTO';
+import { CarDTO } from '../../dtos/CarDTO';
 import { Acessories } from '../CarDetails/styles';
 import { getAcessoryIcon } from '../../utils/getAcessoryIcon';
 import { useEffect, useState } from 'react';
@@ -51,8 +51,8 @@ const SchedulingDetails = () => {
     end: '',
   });
   const route = useRoute();
-  const { car, dates } = route.params as { car: CartDTO; dates: string[] };
-  const rentTotal = Number(car.rent.price * dates.length);
+  const { car, dates } = route.params as { car: CarDTO; dates: string[] };
+  const rentTotal = Number(car.price * dates.length);
 
   const handleConfirmRental = async () => {
     const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`);
@@ -117,8 +117,8 @@ const SchedulingDetails = () => {
           </Description>
 
           <Rent>
-            <Period>{car.rent.period}</Period>
-            <Price>R$ {car.rent.price}</Price>
+            <Period>{car.period}</Period>
+            <Price>R$ {car.price}</Price>
           </Rent>
         </Details>
 
@@ -161,7 +161,7 @@ const SchedulingDetails = () => {
           <RentalPriceLabel>TOTAL</RentalPriceLabel>
           <RentalPriceDetails>
             <RentalPriceQuota>
-              {`R$ ${car.rent.price} x ${dates.length} diárias`}
+              {`R$ ${car.price} x ${dates.length} diárias`}
             </RentalPriceQuota>
             <RentalPriceTotal>R$ {rentTotal}</RentalPriceTotal>
           </RentalPriceDetails>

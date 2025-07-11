@@ -10,12 +10,12 @@ import {
   Type,
   CarImage,
 } from './styles';
-import { CartDTO } from '../../dtos/CartDTO';
+import { CarDTO } from '../../dtos/CarDTO';
 import { RectButtonProps } from 'react-native-gesture-handler';
 import { getAcessoryIcon } from '../../utils/getAcessoryIcon';
 
 interface CarProps extends RectButtonProps {
-  data: CartDTO;
+  data: CarDTO;
 }
 
 const Car = ({ data, ...rest }: CarProps) => {
@@ -29,8 +29,8 @@ const Car = ({ data, ...rest }: CarProps) => {
 
         <About>
           <Rent>
-            <Period>{data.rent.period}</Period>
-            <Price>R$ {data.rent.price}</Price>
+            <Period>{data.period}</Period>
+            <Price>R$ {data.price}</Price>
           </Rent>
 
           <Type>

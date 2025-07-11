@@ -13,13 +13,14 @@ import Input from '../../components/Input';
 import PasswordInput from '../../components/PasswordInput';
 import * as Yup from 'yup';
 import { useNavigation } from '@react-navigation/native';
+import { useAuth } from '../../hooks/auth';
 
 const Signin = () => {
   const navigation = useNavigation();
   const theme = useTheme();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const { signIn } = useAuth();
   const handleSignIn = async () => {
     try {
       const schema = Yup.object().shape({
@@ -31,6 +32,7 @@ const Signin = () => {
 
       await schema.validate({ email, password });
 
+      await signIn({ email, password });
       Alert.alert('Tudo certo', 'Você está logado!');
     } catch (error) {
       if (error instanceof Yup.ValidationError) {

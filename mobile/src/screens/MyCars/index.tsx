@@ -21,13 +21,13 @@ import {
   Title,
 } from './styles';
 import Car from '../../components/Car';
-import { CartDTO } from '../../dtos/CartDTO';
+import { CarDTO } from '../../dtos/CarDTO';
 import { AntDesign } from '@expo/vector-icons';
 import { LoadAnimation } from '../../components/LoadAnimation';
 interface CarProps {
   id: string;
   user_id: string;
-  car: CartDTO;
+  car: CarDTO;
   startDate: string;
   endDate: string;
 }

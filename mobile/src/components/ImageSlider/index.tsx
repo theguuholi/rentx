@@ -4,7 +4,10 @@ import { useCallback, useState } from 'react';
 import Bullet from '../Bullet';
 
 interface ImageSliderProps {
-  imagesUrl: string[];
+  imagesUrl: {
+    id: string;
+    photo: string;
+  }[];
 }
 
 interface ChangeImageProps {
@@ -30,13 +33,13 @@ const ImageSlider = ({ imagesUrl }: ImageSliderProps) => {
 
       <FlatList
         data={imagesUrl}
-        keyExtractor={item => item}
+        keyExtractor={item => item.id}
         horizontal
         showsHorizontalScrollIndicator={false}
         pagingEnabled
         renderItem={({ item }) => (
           <CarImageWrapper>
-            <CarImage source={{ uri: item }} resizeMode='contain' />
+            <CarImage source={{ uri: item.photo }} resizeMode='contain' />
           </CarImageWrapper>
         )}
         onViewableItemsChanged={handleViewableItemsChanged}

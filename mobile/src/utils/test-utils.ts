@@ -1,7 +1,7 @@
 import { ThemeProvider } from 'styled-components/native';
 import theme from '../styles/theme';
 import React from 'react';
-import { CartDTO } from '../dtos/CartDTO';
+import { CarDTO } from '../dtos/CarDTO';
 import { render } from '@testing-library/react-native';
 
 const MyThemeProvider = ({ children }: { children: React.ReactNode }) => {
@@ -25,7 +25,7 @@ export const createMockNavigation = () => ({
 });
 
 // Mock route params for CarDetails
-export const createMockCarRouteParams = (overrides?: Partial<CartDTO>) => ({
+export const createMockCarRouteParams = (overrides?: Partial<CarDTO>) => ({
   params: {
     car: {
       id: '1',
