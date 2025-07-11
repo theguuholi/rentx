@@ -24,7 +24,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { useState } from 'react';
 import { getPlatformDate } from '../../utils/getPlatformDate';
 import { format } from 'date-fns';
-import { CartDTO } from '../../dtos/CartDTO';
+import { CarDTO } from '../../dtos/CarDTO';
 
 interface RentalPeriod {
   start: string;
@@ -36,7 +36,7 @@ interface RentalPeriod {
 const Scheduling = () => {
   const navigation = useNavigation<any>();
   const route = useRoute();
-  const { car } = route.params as { car: CartDTO };
+  const { car } = route.params as { car: CarDTO };
   const [lastSelectedDate, setLastSelectedDate] = useState<DayProps>(
     {} as DayProps
   );

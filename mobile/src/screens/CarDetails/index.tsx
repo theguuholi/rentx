@@ -20,7 +20,7 @@ import {
 
 import Button from '../../components/Button';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { CartDTO } from '../../dtos/CartDTO';
+import { CarDTO } from '../../dtos/CarDTO';
 import { getAcessoryIcon } from '../../utils/getAcessoryIcon';
 import {
   useSharedValue,
@@ -63,7 +63,7 @@ const CarDetails = () => {
     };
   });
 
-  const { car } = route.params as { car: CartDTO };
+  const { car } = route.params as { car: CarDTO };
 
   const handleConfirmRental = () => {
     navigation.navigate('Scheduling', {
@@ -106,8 +106,8 @@ const CarDetails = () => {
           </Description>
 
           <Rent>
-            <Period testID='rent-period'>{car.rent.period}</Period>
-            <Price testID='rent-price'>R$ {car.rent.price}</Price>
+            <Period testID='rent-period'>{car.period}</Period>
+            <Price testID='rent-price'>R$ {car.price}</Price>
           </Rent>
         </Details>
 
@@ -121,10 +121,6 @@ const CarDetails = () => {
           ))}
         </Acessories>
 
-        <About testID='car-about'>{car.about}</About>
-        <About testID='car-about'>{car.about}</About>
-        <About testID='car-about'>{car.about}</About>
-        <About testID='car-about'>{car.about}</About>
         <About testID='car-about'>{car.about}</About>
       </AnimatedScrollView>
 
