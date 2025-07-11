@@ -8,6 +8,7 @@ import MyCars from '../screens/MyCars';
 import Splash from '../screens/Splash';
 import Signin from '../screens/SignIn';
 import FirstStep from '../screens/SignUp/FirstStep';
+import SecondStep from '../screens/SignUp/SecondStep';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -16,6 +17,7 @@ const StackRoutes = () => {
     <Navigator screenOptions={{ headerShown: false }}>
       <Screen name='Signin' component={Signin} />
       <Screen name='SignUpFirstStep' component={FirstStep} />
+      <Screen name='SignUpSecondStep' component={SecondStep} />
       <Screen name='Splash' component={Splash} />
       <Screen name='Home' component={Home} options={{ gestureEnabled: false }} />
       <Screen name='CarDetails' component={CarDetails} />

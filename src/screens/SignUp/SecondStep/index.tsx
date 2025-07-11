@@ -10,15 +10,16 @@ import {
   FormTitle,
 } from './styles';
 import Bullet from '../../../components/Bullet';
-import Input from '../../../components/Input';
+import PasswordInput from '../../../components/PasswordInput';
 import Button from '../../../components/Button';
 import {
   Keyboard,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
 } from 'react-native';
+import theme from '../../../styles/theme';
 
-const FirstStep = () => {
+const SecondStep = () => {
   const navigation = useNavigation();
   return (
     <KeyboardAvoidingView behavior='padding' style={{ flex: 1 }}>
@@ -27,29 +28,27 @@ const FirstStep = () => {
           <Header>
             <BackButton onPress={() => navigation.goBack()} />
             <Steps>
-              <Bullet active />
               <Bullet />
+              <Bullet active />
             </Steps>
           </Header>
 
           <Title>Crie sua{'\n'}conta</Title>
-          <Subtitle>Faça seu cadastro de{'\n'}forma rapida e fácil</Subtitle>
+          <Subtitle>Faça seu cadastro de{'\n'}forma rápida e fácil</Subtitle>
 
           <Form>
-            <FormTitle>1. Dados</FormTitle>
+            <FormTitle>2. Senha</FormTitle>
 
-            <Input iconName='user' placeholder='Nome' />
+            <PasswordInput iconName='lock' placeholder='Senha' />
 
-            <Input iconName='mail' placeholder='E-mail' keyboardType='email-address' />
-
-            <Input iconName='credit-card' placeholder='CNH' keyboardType='numeric' />
+            <PasswordInput iconName='lock' placeholder='Repetir senha' />
           </Form>
 
-          <Button title='Próximo' onPress={() => navigation.navigate('SignUpSecondStep')} />
+          <Button title='Cadastrar' color={theme.colors.success} onPress={() => {}} />
         </Container>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
 };
 
-export default FirstStep;
+export default SecondStep;
