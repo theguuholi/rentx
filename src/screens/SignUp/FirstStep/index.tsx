@@ -16,10 +16,35 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
+  Alert,
 } from 'react-native';
+import { useState } from 'react';
+import * as Yup from 'yup';
 
 const FirstStep = () => {
   const navigation = useNavigation();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [driverLicense, setDriverLicense] = useState('');
+
+  const handleNextStep = async () => {
+    try {
+      const schema = Yup.object().shape({
+        name: Yup.string().required('Nome é obrigatório'),
+        email: Yup.string().email('E-mail inválido').required('E-mail é obrigatório'),
+        driverLicense: Yup.string().required('CNH é obrigatória'),
+      });
+  
+      const data = { name, email, driverLicense };
+      await schema.validate(data);
+      navigation.navigate('SignUpSecondStep', { user: data });
+    } catch (error) {
+      if (error instanceof Yup.ValidationError) {
+        Alert.alert('Opa', error.message);
+      }
+    }
+  };
+
   return (
     <KeyboardAvoidingView behavior='padding' style={{ flex: 1 }}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -38,14 +63,14 @@ const FirstStep = () => {
           <Form>
             <FormTitle>1. Dados</FormTitle>
 
-            <Input iconName='user' placeholder='Nome' />
+            <Input iconName='user' placeholder='Nome' onChangeText={setName} value={name} />
 
-            <Input iconName='mail' placeholder='E-mail' keyboardType='email-address' />
+            <Input iconName='mail' placeholder='E-mail' keyboardType='email-address' onChangeText={setEmail} value={email} />
 
-            <Input iconName='credit-card' placeholder='CNH' keyboardType='numeric' />
+            <Input iconName='credit-card' placeholder='CNH' keyboardType='numeric' onChangeText={setDriverLicense} value={driverLicense} />
           </Form>
 
-          <Button title='Próximo' onPress={() => navigation.navigate('SignUpSecondStep')} />
+          <Button title='Próximo' onPress={handleNextStep} />
         </Container>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
