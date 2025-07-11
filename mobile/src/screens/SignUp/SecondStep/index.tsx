@@ -21,6 +21,7 @@ import {
 import theme from '../../../styles/theme';
 import { useState } from 'react';
 import * as Yup from 'yup';
+import { api } from '../../../services/api';
 
 const SecondStep = () => {
   const navigation = useNavigation();
@@ -43,10 +44,23 @@ const SecondStep = () => {
 
       const data = { password, passwordConfirm };
       await schema.validate(data);
-      navigation.navigate('Confirmation', {
-        title: 'Conta criada!',
-        message: 'Agora é só fazer login\ne aproveitar',
-        nextScreenRoute: 'Home',
+
+      await api.post('/users', {
+        name: user.name,
+        email: user.email,
+        driver_license: user.driverLicense,
+        password,
+      })
+      .then(() => {
+        navigation.navigate('Confirmation', {
+          title: 'Conta criada!',
+          message: 'Agora é só fazer login\ne aproveitar',
+          nextScreenRoute: 'SignIn',
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        Alert.alert('Opa', 'Erro ao cadastrar');
       });
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
