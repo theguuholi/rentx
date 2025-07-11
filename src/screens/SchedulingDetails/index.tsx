@@ -76,7 +76,11 @@ const SchedulingDetails = () => {
       })
       .then(() => {
         setLoading(false);
-        navigation.navigate('SchedulingComplete');
+        navigation.navigate('Confirmation', {
+          title: 'Agendamento realizado!',
+          message: 'Agora é só esperar\nser aprovado e aproveitar',
+          nextScreenRoute: 'Home',
+        });
       })
       .catch(() => {
         setLoading(false);

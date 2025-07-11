@@ -43,8 +43,11 @@ const SecondStep = () => {
 
       const data = { password, passwordConfirm };
       await schema.validate(data);
-      console.log(user);
-      console.log(data);
+      navigation.navigate('Confirmation', {
+        title: 'Conta criada!',
+        message: 'Agora é só fazer login\ne aproveitar',
+        nextScreenRoute: 'Home',
+      });
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         Alert.alert('Opa', error.message);
