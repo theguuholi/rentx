@@ -4,7 +4,6 @@ import {
   Container,
   Header,
   HeaderContent,
-  MyCarsButton,
   TotalCars,
 } from './styles';
 import Logo from '../../assets/logo.svg';
@@ -14,8 +13,6 @@ import { CarDTO } from '../../dtos/CarDTO';
 import { useNavigation } from '@react-navigation/native';
 import { api } from '../../services/api';
 import { useEffect, useState } from 'react';
-import { Ionicons } from '@expo/vector-icons';
-import theme from '../../styles/theme';
 import { BackHandler } from 'react-native';
 import { LoadAnimation } from '../../components/LoadAnimation';
 
@@ -28,7 +25,6 @@ const Home = () => {
     try {
       setLoading(true);
       const response = await api.get('/cars');
-      console.log(response.data);
       setCars(response.data);
     } catch (error) {
       // Handle error silently or implement proper error handling
@@ -73,9 +69,9 @@ const Home = () => {
         />
       )}
 
-      <MyCarsButton onPress={() => navigation.navigate('MyCars')}>
+      {/* <MyCarsButton onPress={() => navigation.navigate('MyCars')}>
         <Ionicons name='car-sport' size={32} color={theme.colors.shape} />
-      </MyCarsButton>
+      </MyCarsButton> */}
     </Container>
   );
 };
